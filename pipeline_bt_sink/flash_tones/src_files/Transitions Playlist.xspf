@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">
+	<title>Playlist</title>
+	<trackList>
+		<track>
+			<location>file:///C:/Users/Thew/Desktop/pride/Transitions/Transition%201.mp3</location>
+			<title>Ava Max - My Head &amp; My Heart [Official Music Video]</title>
+			<creator>Ava Max</creator>
+			<duration>147912</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>0</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/Thew/Desktop/pride/Transitions/Transition%202.mp3</location>
+			<title>Becky Hill, David Guetta - Remember (Official Lyric Video)</title>
+			<creator>David Guetta</creator>
+			<duration>128784</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>1</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/Thew/Desktop/pride/Transitions/Transition%203.mp3</location>
+			<title>Toxic (Album Mix Instrumental)</title>
+			<creator>Britney Spears</creator>
+			<image>file:///C:/Users/Thew/AppData/Roaming/vlc/art/arturl/452a6654f47c9de8fe1338a19ff6d01d/art</image>
+			<duration>157248</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>2</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/Thew/Desktop/pride/Transitions/Transition%204.mp3</location>
+			<title>Strong Enough</title>
+			<creator>Cher</creator>
+			<album>Believe</album>
+			<duration>188520</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>3</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/Thew/Desktop/pride/Transitions/Transition%205.mp3</location>
+			<title>Hallucinate</title>
+			<creator>Dua Lipa</creator>
+			<album>Hallucinate</album>
+			<duration>153456</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>4</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/Thew/Desktop/pride/Transitions/Transition%206.mp3</location>
+			<title>Head &amp; Heart</title>
+			<creator>Joel Corry</creator>
+			<album>Head &amp; Heart</album>
+			<duration>131736</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>5</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/Thew/Desktop/pride/Transitions/Transition%207.mp3</location>
+			<title>Lady Gaga - Rain On Me (Lyrics) feat. Ariana Grande</title>
+			<creator>Rachel Gardner</creator>
+			<duration>172728</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>6</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/Thew/Desktop/pride/Transitions/Transition%208.mp3</location>
+			<title>Tragedy</title>
+			<creator>Steps</creator>
+			<album>Tragedy</album>
+			<image>file:///C:/Users/Thew/AppData/Roaming/vlc/art/artistalbum/Steps/Tragedy/art</image>
+			<duration>210816</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>7</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/Thew/Desktop/pride/Transitions/Transition%209.mp3</location>
+			<title>I Wanna Dance With Somebody (Who Loves Me)</title>
+			<creator>Nikki Webster</creator>
+			<duration>234024</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>8</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/Thew/Desktop/pride/Transitions/Transition%2010.mp3</location>
+			<title>It&#39;s Raining Men</title>
+			<creator>The Weather Girls</creator>
+			<image>file:///C:/Users/Thew/AppData/Roaming/vlc/art/arturl/274505a66419c4cef5a394dcf2e57173/art</image>
+			<duration>250992</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>9</vlc:id>
+			</extension>
+		</track>
+	</trackList>
+	<extension application="http://www.videolan.org/vlc/playlist/0">
+		<vlc:item tid="0"/>
+		<vlc:item tid="1"/>
+		<vlc:item tid="2"/>
+		<vlc:item tid="3"/>
+		<vlc:item tid="4"/>
+		<vlc:item tid="5"/>
+		<vlc:item tid="6"/>
+		<vlc:item tid="7"/>
+		<vlc:item tid="8"/>
+		<vlc:item tid="9"/>
+	</extension>
+</playlist>
