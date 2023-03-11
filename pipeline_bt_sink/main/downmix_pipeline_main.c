@@ -67,7 +67,7 @@ void app_main(void)
 
     ESP_LOGI(TAG, "[ 0 ] Create Bluetooth service");
     bluetooth_service_cfg_t bt_cfg = {
-        .device_name = "Munro Room",
+        .device_name = "Ochil Room",
         .mode = BLUETOOTH_A2DP_SINK,
     };
     bluetooth_service_start(&bt_cfg);
@@ -88,6 +88,7 @@ void app_main(void)
 
     ESP_LOGI(TAG, "[2.0] Get Bluetooth stream");
     bt_stream_reader = bluetooth_service_create_stream();
+    mem_assert(bt_stream_reader);
 
     ESP_LOGI(TAG, "[2.0] Get tone stream");
     tone_stream_cfg_t tone_cfg = TONE_STREAM_CFG_DEFAULT();
@@ -152,6 +153,7 @@ void app_main(void)
     rsp_sdcard_cfg.dest_rate = 48000,
     rsp_sdcard_cfg.dest_ch = 1,
     base_rsp_filter_el = rsp_filter_init(&rsp_sdcard_cfg);
+    mem_assert(base_rsp_filter_el);
 
     rsp_sdcard_cfg.src_rate = 44100,
     rsp_sdcard_cfg.src_ch = 1,
@@ -163,6 +165,7 @@ void app_main(void)
     raw_stream_cfg_t raw_cfg = RAW_STREAM_CFG_DEFAULT();
     raw_cfg.type = AUDIO_STREAM_WRITER;
     base_raw_write_el = raw_stream_init(&raw_cfg);
+    mem_assert(base_raw_write_el);
     newcome_raw_write_el = raw_stream_init(&raw_cfg);
 
     ESP_LOGI(TAG, "[5.0] Set up  event listener");
@@ -170,24 +173,30 @@ void app_main(void)
     audio_event_iface_handle_t evt = audio_event_iface_init(&evt_cfg);
 
     ESP_LOGI(TAG, "[5.1.1] Set up base piepline");
-    audio_pipeline_handle_t base_stream_pipeline = audio_pipeline_init(&pipeline_cfg);
+    audio_pipeline_cfg_t base_pipeline_cfg = DEFAULT_AUDIO_PIPELINE_CONFIG();
+    audio_pipeline_handle_t base_stream_pipeline = audio_pipeline_init(&base_pipeline_cfg);
     mem_assert(base_stream_pipeline);
-    audio_pipeline_register(base_stream_pipeline, bt_stream_reader, "bt");
-    audio_pipeline_register(base_stream_pipeline, base_rsp_filter_el, "base_filter");
-    audio_pipeline_register(base_stream_pipeline, base_raw_write_el, "base_raw");
+    int base_err = 0;
+    base_err += audio_pipeline_register(base_stream_pipeline, bt_stream_reader, "bt");
+    base_err += audio_pipeline_register(base_stream_pipeline, base_rsp_filter_el, "base_filter");
+    base_err += audio_pipeline_register(base_stream_pipeline, base_raw_write_el, "base_raw");
+    if (base_err) {
+        ESP_LOGE(TAG, "setup base pipeline components %i", base_err);
+    }
 
-    ESP_LOGI(TAG, "[5.1.2] link base piepline");
+    ESP_LOGI(TAG, "[5.1.2] link base piepline components");
     const char *link_tag_base[3] = {"bt", "base_filter", "base_raw"};
-    audio_pipeline_link(base_stream_pipeline, &link_tag_base[0], 4);
+    audio_pipeline_link(base_stream_pipeline, &link_tag_base[0], 3);
 
-    ESP_LOGI(TAG, "[5.1.2] link base to downmixer");
+    ESP_LOGI(TAG, "[5.1.3] link base to downmixer");
     ringbuf_handle_t rb_base = audio_element_get_input_ringbuf(base_raw_write_el);
     downmix_set_input_rb(downmixer, rb_base, 0);
-    ESP_LOGI(TAG, "[5.1.3] set base piepline listener");
+    ESP_LOGI(TAG, "[5.1.4] set base piepline listener");
     audio_pipeline_set_listener(base_stream_pipeline, evt);
 
     ESP_LOGI(TAG, "[5.2] Set up newcome piepline");
-    audio_pipeline_handle_t newcome_stream_pipeline = audio_pipeline_init(&pipeline_cfg);
+    audio_pipeline_cfg_t newcome_pipeline_cfg = DEFAULT_AUDIO_PIPELINE_CONFIG();
+    audio_pipeline_handle_t newcome_stream_pipeline = audio_pipeline_init(&newcome_pipeline_cfg);
     mem_assert(newcome_stream_pipeline);
     audio_pipeline_register(newcome_stream_pipeline, newcome_tone_reader_el, "newcome_file");
     audio_pipeline_register(newcome_stream_pipeline, newcome_mp3_decoder_el, "newcome_mp3");

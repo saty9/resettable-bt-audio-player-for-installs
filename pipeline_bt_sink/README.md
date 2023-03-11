@@ -1,5 +1,7 @@
 ## Setup
 
+You will need python >= 3.7 installed
+
 in a different directory where you want to install the adf framework
 ```
 git clone https://github.com/espressif/esp-adf.git esp-adf-v2.5
@@ -12,6 +14,31 @@ git submodule update --init --recursive
 
 cd esp-idf
 .\install.bat
+```
+
+## Before using any other commands
+
+using cmd
+```
+set ADF_PATH=PATH_TO_ADF_FRAMEWORK
+set IDF_PATH=PATH_TO_ADF_FRAMEWORK\esp-idf
+%ADF_PATH%/esp-idf/export.bat
+```
+
+## Installing
+
+```
+idf.py build
+idf.py -p PORT_NAME flash
+```
+To flash you may need to hold the boot button then press reset release reset then release boot to allow flashing
+
+PORT_NAMEwill probably be COM#
+
+## Viewing Serial Output
+
+```
+idf.py -p PORT_NAME monitor
 ```
 
 ## flashing audio tones
